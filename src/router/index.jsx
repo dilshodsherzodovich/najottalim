@@ -3,6 +3,7 @@ import { Suspense, lazy, useEffect } from "react";
 import MainLayout from "../layouts/MainLayout";
 import AuthLayout from "../layouts/AuthLayout.jsx";
 import Auth from "../pages/Auth";
+import Loader from "../components/Loader";
 
 const Router = () => {
   const { pathname } = useLocation();
@@ -15,7 +16,7 @@ const Router = () => {
   }, [pathname]);
 
   return (
-    <Suspense fallback={<h1>Loading..</h1>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
