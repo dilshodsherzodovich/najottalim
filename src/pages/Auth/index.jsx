@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 // Images & Icons
 import Logo from "../../assets/logo.png";
 import Hand from "../../assets/icons/hand.svg";
@@ -12,7 +12,6 @@ import {
 import Heading4 from "../../components/Headings/Heading4";
 import FontNormal2 from "../../components/Fonts/FontNormal2";
 import FontBold1 from "../../components/Fonts/FontBold1";
-import FontMedium2 from "../../components/Fonts/FontMedium2";
 
 function Auth() {
   const [password, setPassword] = useState("");
@@ -30,23 +29,25 @@ function Auth() {
       <div className="grid grid-cols-12 h-full">
         <div className="col-span-6 bg-bgColorSecondary text-center py-36">
           <img src={Logo} alt="Logo" className="w-[300px] mx-auto mb-10" />
-          <Heading4 className="text-black text-[26px]">Login</Heading4>
+          <Heading4 className="text-textBlack text-[26px]">Login</Heading4>
           <FontNormal2 className="text-[16px] mt-[37px] mb-[47px]">
             qisqacha ta’rif
           </FontNormal2>
           <div className="flex gap-[6px] justify-center pt-10">
             <div className="w-[12px] h-[12px] bg-accentBlue rounded-full"></div>
-            <div className="w-[12px] h-[12px] bg-accentBlue rounded-full opacity-30"></div>
+            <Link to="/auth/verify">
+              <div className="w-[12px] h-[12px] bg-accentBlue rounded-full opacity-30"></div>
+            </Link>
             <div className="w-[12px] h-[12px] bg-accentBlue rounded-full opacity-30"></div>
           </div>
         </div>
         <div className="col-span-6">
           <div className="w-[60%] mx-auto pt-[100px]">
             <img src={Hand} alt="hand icon" />
-            <FontBold1 className="text-[30px] text-black my-3">
+            <FontBold1 className="text-[30px] text-textBlack my-3">
               Welcome back!
             </FontBold1>
-            <FontNormal2 className="text-black text-[16px]">
+            <FontNormal2 className="text-textBlack text-[16px]">
               Please login to access your account.
             </FontNormal2>
 

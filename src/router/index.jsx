@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 import AuthLayout from "../layouts/AuthLayout.jsx";
 import Auth from "../pages/Auth";
 import Loader from "../components/Loader";
+import Verify from "../pages/Verify";
 
 const Router = () => {
   const { pathname } = useLocation();
@@ -23,6 +24,9 @@ const Router = () => {
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<Auth />} />
+        </Route>
+        <Route path="/auth/verify" element={<AuthLayout />}>
+          <Route index element={<Verify />} />
         </Route>
         <Route
           path="*"
