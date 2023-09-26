@@ -18,6 +18,7 @@ module.exports = {
         bgGrey: "#EAEAEA",
         price: "#FCC43E",
         status: "#FB7D5B",
+        lightColor: "#C1BBEB",
       },
     },
   },
