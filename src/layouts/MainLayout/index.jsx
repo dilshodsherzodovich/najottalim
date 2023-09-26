@@ -8,9 +8,9 @@ const MainLayout = () => {
   const [isAuth, setIsAuth] = useState(true);
 
   return isAuth ? (
-    <div className="grid grid-cols-11">
+    <div className="flex">
       <Sidebar />
-      <div>
+      <div className="min-h-screen w-full bg-bgColor">
         <Header />
         <Outlet />
       </div>

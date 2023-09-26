@@ -12,6 +12,7 @@ module.exports = {
         textColor: "#303972",
         price: "#FCC43E",
         status: "#FB7D5B",
+        lightColor: "#C1BBEB",
       },
     },
   },

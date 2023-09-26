@@ -1,15 +1,14 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import MainLayout from "../layouts/MainLayout";
 import AuthLayout from "../layouts/AuthLayout.jsx";
 import Auth from "../pages/Auth";
 import Loader from "../components/Loader";
+import Teachers from "../pages/Teachers";
+import Home from "../pages/Home";
 
 const Router = () => {
   const { pathname } = useLocation();
-
-  //import project pages
-  const Home = lazy(() => import("../pages/Home"));
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,6 +19,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
+          <Route path="/teachers" element={<Teachers />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<Auth />} />
