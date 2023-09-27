@@ -13,7 +13,7 @@ module.exports = {
         success: "#4CBC9A",
         textColor: "#303972",
         textGrey: "#455360",
-        lightGrey: "#455360",
+        lightGrey: "#A098AE;",
         babyBlue: "#66BCE8",
         bgGrey: "#EAEAEA",
         price: "#FCC43E",

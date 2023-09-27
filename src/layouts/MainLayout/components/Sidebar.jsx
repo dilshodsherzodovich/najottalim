@@ -107,7 +107,7 @@ function Sidebar() {
             alt="logo"
           />
         </div>
-        <div className="links-list flex flex-col pl-8 gap-2 min-[1281px]:pl-12">
+        <div className="links-list flex flex-col pl-8 gap-2  min-[1281px]:pl-12">
           {renderLinks()}
         </div>
       </div>
