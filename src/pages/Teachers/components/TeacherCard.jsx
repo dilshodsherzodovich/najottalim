@@ -1,24 +1,36 @@
 import React from "react";
 import FontBold1 from "../../../components/Fonts/FontBold1";
+import { toast } from "react-toastify";
+import { handleWorkDays } from "../../../utils/handleWorkDays";
 import { ReactComponent as UserIcon } from "../../../assets/icons/User.svg";
 import { ReactComponent as CalendarIcon } from "../../../assets/icons/Calendar.svg";
+import { ReactComponent as DeleteIcon } from "../../../assets/icons/delete.svg";
+import { ReactComponent as EditIcon } from "../../../assets/icons/edit.svg";
+
 import teacherImage from "../../../assets/images/Teacher.png";
 import Heading6 from "../../../components/Headings/Heading6";
-import { handleWorkDays } from "../../../utils/handleWorkDays";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { setIsConfirmOpen } from "../../../redux/slices/modals.slice";
+import { useDispatch } from "react-redux";
 
 function TeacherCard({ _id, first_name, last_name, degree, workDays, avatar }) {
+  const dispatch = useDispatch();
+
   const handleCopy = () => {
     toast.success("Copied to clipboard", {
       theme: "colored",
       position: "top-center",
-      autoClose: 400,
+      autoClose: 500,
     });
   };
 
+  const handleConfirmModalOpen = () => {
+    dispatch(setIsConfirmOpen(true));
+  };
+
   return (
-    <div className="col-span-1 py-4 px-5 bg-white rounded-[20px]">
+    <div className="col-span-1 py-4 px-5 bg-white rounded-[20px] relative">
       <div className="inner-card">
         <div className="img-box w-40 h-40 rounded-full mx-auto">
           <img
@@ -60,6 +72,17 @@ function TeacherCard({ _id, first_name, last_name, degree, workDays, avatar }) {
               <Heading6>{handleWorkDays(workDays)}</Heading6>
             </div>
           </div>
+        </div>
+        <div className="icons flex items-center absolute top-2 right-2">
+          <Link
+            to={`/teachers/edit?teacherId=${_id}`}
+            className="cursor-pointer"
+          >
+            <EditIcon />
+          </Link>
+          <span onClick={handleConfirmModalOpen}>
+            <DeleteIcon className="cursor-pointer" />
+          </span>
         </div>
       </div>
     </div>
