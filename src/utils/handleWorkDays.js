@@ -1,4 +1,4 @@
-export const workDays = (days) => {
+export const handleWorkDays = (days) => {
   const weekDays = ["Du", "Se", "Chor", "Pay", "Juma", "Shan"];
   let work = [];
   if (days === "even") {

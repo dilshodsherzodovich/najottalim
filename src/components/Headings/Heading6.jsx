@@ -1,6 +1,6 @@
 import React from "react";
 
-function Heading1({ className = "", children }) {
+function Heading6({ className = "", children }) {
   return (
     <p
       className={`text-textColor text-[14px] font-[700] break-words ${className}`}
@@ -10,4 +10,4 @@ function Heading1({ className = "", children }) {
   );
 }
 
-export default Heading1;
+export default Heading6;

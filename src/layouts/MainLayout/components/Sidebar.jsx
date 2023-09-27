@@ -98,7 +98,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="min-w-[345px]">
+    <div className="w-[310px] min-[1281px]:w-[345px]">
       <div className="sidebar-inner h-screen sticky w-full bg-primary left-0 top-0 bottom-0 pt-2">
         <div className="logo-box w-[150px] mx-auto mb-2">
           <img
@@ -107,7 +107,7 @@ function Sidebar() {
             alt="logo"
           />
         </div>
-        <div className="links-list flex flex-col pl-8 gap-2  min-[1281px]:pl-12">
+        <div className="links-list flex flex-col pl-2 gap-2  min-[1281px]:pl-12">
           {renderLinks()}
         </div>
       </div>
