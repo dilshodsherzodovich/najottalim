@@ -33,7 +33,7 @@ const Clients = (clientsInfo) => {
                   alt="user icon"
                 />
                 <div>
-                  <FontNormal2 className="text-textGrey">Toifa</FontNormal2>
+                  <FontNormal2 className="text-lightGrey">Toifa</FontNormal2>
                   <FontBold1>{client.degree}</FontBold1>
                 </div>
               </div>

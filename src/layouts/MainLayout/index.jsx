@@ -10,7 +10,7 @@ const MainLayout = () => {
   return isAuth ? (
     <div className="flex">
       <Sidebar />
-      <div className="min-h-screen w-full bg-bgColor">
+      <div className="min-h-screen w-full bg-bgColor px-6 min-[1281px]:px-12">
         <Header />
         <Outlet />
       </div>

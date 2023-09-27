@@ -23,3 +23,6 @@ code {
   fill: #4d44b5;
 }
 
+.card-footer g path {
+  fill: #fafafa;
+}
