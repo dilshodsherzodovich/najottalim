@@ -8,6 +8,7 @@ function PrimaryInput({
   value,
   placeholder = "",
   required = false,
+  defaultValue,
   handleOnChange = (e) => {},
 }) {
   return (
@@ -17,6 +18,7 @@ function PrimaryInput({
       className={`text-lightGrey text-[14px] font-[400] border border-lightColor rounded-[5px] outline-none py-3 px-[14px] ${className}`}
       value={value}
       placeholder={placeholder}
+      defaultValue={defaultValue}
       name={name}
       required={required}
       onChange={(e) => {
