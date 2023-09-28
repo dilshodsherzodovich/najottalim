@@ -7,6 +7,7 @@ function PrimaryInput({
   name = "",
   value,
   placeholder = "",
+  required = false,
   handleOnChange = (e) => {},
 }) {
   return (
@@ -17,6 +18,7 @@ function PrimaryInput({
       value={value}
       placeholder={placeholder}
       name={name}
+      required={required}
       onChange={(e) => {
         handleOnChange(e);
       }}

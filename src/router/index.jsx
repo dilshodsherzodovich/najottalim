@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import Verify from "../pages/Verify";
 import Teachers from "../pages/Teachers";
 import Home from "../pages/Home";
+import AddTeacher from "../pages/AddTeacher";
 
 const Router = () => {
   const { pathname } = useLocation();
@@ -21,6 +22,7 @@ const Router = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/teachers" element={<Teachers />} />
+          <Route path="/teachers/add" element={<AddTeacher />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<Auth />} />
