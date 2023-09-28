@@ -26,3 +26,7 @@ code {
 .card-footer g path {
   fill: #fafafa;
 }
+
+.custom-width {
+  width: calc(100% - 340px);
+}

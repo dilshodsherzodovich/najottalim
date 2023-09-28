@@ -1,29 +1,29 @@
 import React from "react";
-import FontBold1 from "../../components/Fonts/FontBold1";
-import FontNormal2 from "../../components/Fonts/FontNormal2";
+import FontBold1 from "../../../components/Fonts/FontBold1";
+import FontNormal2 from "../../../components/Fonts/FontNormal2";
 
-import user from "../../assets/icons/User-white.svg";
+import user from "../../../assets/icons/User-white.svg";
 
-const Clients = (clientsInfo) => {
-  console.log(clientsInfo.clientsInfo[0]);
+const Clients = (teachersInfo) => {
+  
   const paddingY = "py-[20px]";
   return (
     <table>
       <tbody>
-        {clientsInfo.clientsInfo.map((client, id) => (
+        {teachersInfo.clientsInfo.map((teacher, id) => (
           <tr key={id}>
             <td className={`${paddingY} px-[2rem]`}>
               <img
-                src={client.img}
+                src={teacher.img}
                 className="rounded-full w-[50px] h-[50px] object-cover"
                 alt="teacher icon"
               />
             </td>
             <td className={`${paddingY} pr-[4rem]`}>
-              <FontBold1 className="text-start">{client.fullname}</FontBold1>
+              <FontBold1 className="text-start">{teacher.fullname}</FontBold1>
             </td>
             <td className={`${paddingY} px-[4rem]`}>
-              <FontBold1 className="text-primary">ID {client.id}</FontBold1>
+              <FontBold1 className="text-primary">ID {teacher.id}</FontBold1>
             </td>
             <td className={`${paddingY} px-[5rem]`}>
               <div className="flex gap-4 ">
@@ -34,13 +34,13 @@ const Clients = (clientsInfo) => {
                 />
                 <div>
                   <FontNormal2 className="text-lightGrey">Toifa</FontNormal2>
-                  <FontBold1>{client.degree}</FontBold1>
+                  <FontBold1>{teacher.degree}</FontBold1>
                 </div>
               </div>
             </td>
             <td className={`${paddingY} px-[5rem]`}>
               <FontBold1 className="capitalize px-[43px] rounded-[40px] bg-bgBlue text-price">
-                {client.EvenOrOdd}
+                {teacher.EvenOrOdd}
               </FontBold1>
             </td>
             <td className={`${paddingY} pl-[6rem]`}>

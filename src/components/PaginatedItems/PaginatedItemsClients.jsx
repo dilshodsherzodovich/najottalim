@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
-import Teachers from "../../pages/Home/components/Teachers";
+import Clients from "../../pages/Home/components/Clients";
 
 // images & icons
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
-const PaginatedItemsTeachers = ({ data, itemsPerPage }) => {
+const PaginatedItemsClients = ({ data, itemsPerPage }) => {
   const items = data;
 
   function Items({ design }) {
@@ -31,7 +31,7 @@ const PaginatedItemsTeachers = ({ data, itemsPerPage }) => {
     <>
       <Items
         currentItems={currentItems}
-        design={<Teachers clientsInfo={currentItems} />}
+        design={<Clients clientsInfo={currentItems} />}
       />
       <div className="flex justify-between mt-[43px] w-[95%] mx-auto">
         <p>
@@ -56,4 +56,4 @@ const PaginatedItemsTeachers = ({ data, itemsPerPage }) => {
   );
 };
 
-export default PaginatedItemsTeachers;
+export default PaginatedItemsClients;
