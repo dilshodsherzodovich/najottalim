@@ -1,21 +1,41 @@
 import React from "react";
 import FontBold1 from "../../../components/Fonts/FontBold1";
-import { RiDeleteBinLine, RiPencilLine } from "react-icons/ri";
+import { ReactComponent as DeleteIcon } from "../../../assets/icons/delete.svg";
+import { ReactComponent as EditIcon } from "../../../assets/icons/edit.svg";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsConfirmOpen } from "../../../redux/slices/modals.slice";
 
 const Equipment = ({ EquipmentInfo }) => {
+  const dispatch = useDispatch();
+
+  const handleConfirmModalOpen = () => {
+    dispatch(setIsConfirmOpen(true));
+  };
+
   return (
-    <div className="grid grid-cols-4 gap-[35px]">
+    <div className="grid grid-cols-3 min-[1281px]:grid-cols-4 gap-[35px]">
       {EquipmentInfo.map((item, index) => (
-        <div className="bg-lightColor px-3 pt-[13px] pb-8 inline-block rounded-[20px] relative">
+        <div
+          key={index}
+          className="bg-lightColor px-3 pt-[13px] pb-8 inline-block rounded-[20px] relative col-span-1"
+        >
           <div className="w-[100%]  mb-2">
             <img
               src={item.image}
               className="object-cover"
               alt="equipment img"
             />
-            <div className="flex gap-4 absolute top-5 right-4">
-              <RiDeleteBinLine className="text-[24px] text-iconColor" />
-              <RiPencilLine className="text-[24px] text-iconColor" />
+            <div className="flex absolute top-5 right-4">
+              <Link
+                to={`/equipments/edit?teacherId=${item._id}`}
+                className="cursor-pointer"
+              >
+                <EditIcon />
+              </Link>
+              <span onClick={handleConfirmModalOpen}>
+                <DeleteIcon className="cursor-pointer" />
+              </span>
             </div>
           </div>
           <div className="flex justify-between">

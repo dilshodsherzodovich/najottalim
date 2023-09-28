@@ -3,11 +3,13 @@ import FontBold1 from "../../../components/Fonts/FontBold1";
 import { RiDeleteBinLine, RiPencilLine } from "react-icons/ri";
 
 const Product = ({ ProductInfo }) => {
-  
   return (
-    <div className="grid grid-cols-4 gap-[35px]">
+    <div className="grid grid-cols-3 min-[1281px]:grid-cols-4 gap-[35px]">
       {ProductInfo.map((item, index) => (
-        <div className="bg-lightColor px-3 pt-[13px] pb-8 inline-block rounded-[20px] relative">
+        <div
+          key={index}
+          className="bg-lightColor px-3 pt-[13px] pb-8 inline-block rounded-[20px] col-span-1 relative"
+        >
           <div className="w-[100%] mb-2">
             <img
               src={item.image}
