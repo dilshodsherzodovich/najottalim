@@ -1,15 +1,19 @@
 import React from "react";
 import CustomAddForm from "../../../components/FormElements/CustomAddForm";
 import PrimaryInput from "../../../components/FormElements/PrimaryInput";
+import PrimaryBtn from "../../../components/FormElements/PrimaryBtn";
+
 import Label from "../../../components/FormElements/Label";
 import TextArea from "../../../components/FormElements/TextArea";
 import FileUpload from "../../../components/FormElements/FileUpload";
 import SelectInput from "../../../components/FormElements/SelectInput";
 import { useSelector } from "react-redux";
 import { formatDate } from "../.././../utils/formDate";
+import { useNavigate } from "react-router-dom";
 
 function TeachersAddForm({ edit }) {
   const { teacher } = useSelector((state) => state.singleTeacher);
+  const navigate = useNavigate();
 
   return (
     <CustomAddForm className="pt-12 pb-24">
@@ -124,6 +128,19 @@ function TeachersAddForm({ edit }) {
             { value: "female", label: "Ayol" },
           ]}
         />
+      </div>
+      <div className="buttons flex items-center justify-end gap-8  col-span-2">
+        <PrimaryBtn
+          className="border-2 border-primary text-primary"
+          handleClick={() => {
+            navigate("/teachers");
+          }}
+        >
+          Bekor qilish
+        </PrimaryBtn>
+        <PrimaryBtn className="border-2 border-primary text-white bg-primary">
+          {edit ? "Saqlash" : "Qo'shish"}
+        </PrimaryBtn>
       </div>
     </CustomAddForm>
   );
