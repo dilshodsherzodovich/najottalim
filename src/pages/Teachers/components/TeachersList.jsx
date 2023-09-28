@@ -7,7 +7,7 @@ function TeachersList() {
 
   const renderList = (teachersList) => {
     return teachersList.map((item) => {
-      return <TeacherCard key={item.id} {...item} />;
+      return <TeacherCard key={item._id} {...item} />;
     });
   };
 

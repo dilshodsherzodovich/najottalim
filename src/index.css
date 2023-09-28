@@ -30,3 +30,36 @@ code {
 .custom-width {
   width: calc(100% - 340px);
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.upload-file input {
+  display: none;
+}
+
+.custom-select * {
+  outline: none !important;
+}
+
+.custom-select .css-qbdosj-Input,
+.react-select-2-placeholder {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.css-1u9des2-indicatorSeparator {
+  display: none;
+}
+
+.css-1hb7zxy-IndicatorsContainer {
+  padding-right: 14px !important;
+}
