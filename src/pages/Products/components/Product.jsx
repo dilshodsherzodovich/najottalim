@@ -1,8 +1,16 @@
 import React from "react";
 import FontBold1 from "../../../components/Fonts/FontBold1";
-import { RiDeleteBinLine, RiPencilLine } from "react-icons/ri";
+import { ReactComponent as DeleteIcon } from "../../../assets/icons/delete.svg";
+import { ReactComponent as EditIcon } from "../../../assets/icons/edit.svg";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsConfirmOpen } from "../../../redux/slices/modals.slice";
 
 const Product = ({ ProductInfo }) => {
+  const dispatch = useDispatch();
+  const handleConfirmModalOpen = () => {
+    dispatch(setIsConfirmOpen(true));
+  };
   return (
     <div className="grid grid-cols-3 min-[1281px]:grid-cols-4 gap-[35px]">
       {ProductInfo.map((item, index) => (
@@ -17,8 +25,15 @@ const Product = ({ ProductInfo }) => {
               alt="equipment img"
             />
             <div className="flex gap-4 absolute bottom-2 right-7">
-              <RiDeleteBinLine className="text-[24px] text-iconColor" />
-              <RiPencilLine className="text-[24px] text-iconColor" />
+              <Link
+                to={`/products/edit?productId=${index + 1}`}
+                className="cursor-pointer"
+              >
+                <EditIcon />
+              </Link>
+              <span onClick={handleConfirmModalOpen}>
+                <DeleteIcon className="cursor-pointer" />
+              </span>
             </div>
           </div>
           <div className="flex justify-between">

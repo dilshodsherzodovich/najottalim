@@ -5,8 +5,11 @@ import Label from "../../../components/FormElements/Label";
 import TextArea from "../../../components/FormElements/TextArea";
 import FileUpload from "../../../components/FormElements/FileUpload";
 import SelectInput from "../../../components/FormElements/SelectInput";
+import { useSelector } from "react-redux";
 
-function TeachersAddForm() {
+function TeachersAddForm({ edit }) {
+  const { teacher } = useSelector((state) => state.singleTeacher);
+
   return (
     <CustomAddForm className="pt-12 pb-24">
       <div className="flex flex-col col-span-1">
@@ -16,6 +19,7 @@ function TeachersAddForm() {
         <PrimaryInput
           name="first_name"
           type="text"
+          value={edit ? teacher.first_name : null}
           id="teacher_name"
           required={true}
           placeholder="Ismingizni kiriting"

@@ -12,7 +12,7 @@ function EditTeacher() {
           </Heading4>
         </div>
         <section className="teachers-add-form pb-20">
-          <TeachersAddForm />
+          <TeachersAddForm edit={true} />
         </section>
       </section>
     </main>
