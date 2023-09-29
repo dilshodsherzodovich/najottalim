@@ -2,17 +2,19 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Suspense, useEffect } from "react";
 import MainLayout from "../layouts/MainLayout";
 import AuthLayout from "../layouts/AuthLayout.jsx";
-import Auth from "../pages/Auth";
 import Loader from "../components/Loader";
 import Verify from "../pages/Verify";
-import Teachers from "../pages/Teachers";
+import Auth from "../pages/Auth";
 import Home from "../pages/Home";
-import Equipments from "../pages/Equipments";
-import Products from "../pages/Products";
+import Teachers from "../pages/Teachers";
 import AddTeacher from "../pages/AddTeacher";
+import Equipments from "../pages/Equipments";
 import EditTeacher from "../pages/EditTeacher";
 import AddEquipment from "../pages/AddEquipment";
 import EditEquipment from "../pages/EditEquipment";
+import Products from "../pages/Products";
+import AddProduct from "../pages/AddProducts";
+import EditProduct from "../pages/EditProduct";
 
 const Router = () => {
   const { pathname } = useLocation();
@@ -27,12 +29,14 @@ const Router = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/teachers" element={<Teachers />} />
-          <Route path="/equipments" element={<Equipments />} />
-          <Route path="/products" element={<Products />} />
           <Route path="/teachers/add" element={<AddTeacher />} />
           <Route path="teachers/edit" element={<EditTeacher />} />
+          <Route path="/equipments" element={<Equipments />} />
           <Route path="/equipments/add" element={<AddEquipment />} />
           <Route path="/equipments/edit" element={<EditEquipment />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/add" element={<AddProduct />} />
+          <Route path="/products/edit" element={<EditProduct />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<Auth />} />
