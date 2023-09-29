@@ -5,6 +5,7 @@ import { ReactComponent as EditIcon } from "../../../assets/icons/edit.svg";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIsConfirmOpen } from "../../../redux/slices/modals.slice";
+import EquipmentImg from "../../../assets/images/equipment.png";
 
 const Equipment = ({ EquipmentInfo }) => {
   const dispatch = useDispatch();
@@ -22,13 +23,13 @@ const Equipment = ({ EquipmentInfo }) => {
         >
           <div className="w-[100%]  mb-2">
             <img
-              src={item.image}
+              src={EquipmentImg}
               className="object-cover"
               alt="equipment img"
             />
             <div className="flex absolute top-5 right-4">
               <Link
-                to={`/equipments/edit?teacherId=${item._id}`}
+                to={`/equipments/edit?equipmentId=${item._id}`}
                 className="cursor-pointer"
               >
                 <EditIcon />

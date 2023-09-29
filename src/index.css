@@ -63,3 +63,7 @@ input[type="number"] {
 .css-1hb7zxy-IndicatorsContainer {
   padding-right: 14px !important;
 }
+
+.file-delete-icon path {
+  stroke: white;
+}
