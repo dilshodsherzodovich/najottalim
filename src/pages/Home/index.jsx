@@ -11,7 +11,7 @@ import Heading3 from "../../components/Headings/Heading3";
 import Heading4 from "../../components/Headings/Heading4";
 import PaginatedItemsTeachers from "../../components/PaginatedItems/PaginatedItemsTeachers";
 import PaginatedItemsClients from "../../components/PaginatedItems/PaginatedItemsClients";
-
+import DateSelector from "../../components/FormElements/DatePicker";
 const dataMenu = [
   {
     icon: products,
@@ -181,6 +181,8 @@ function index() {
           </div>
         ))}
       </div>
+
+      <DateSelector />
 
       <div className="bg-white p-8 rounded-[20px]">
         <Heading4 className="mb-[50px]">Ustozlar</Heading4>

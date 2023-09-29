@@ -11,6 +11,8 @@ import Equipments from "../pages/Equipments";
 import Products from "../pages/Products";
 import AddTeacher from "../pages/AddTeacher";
 import EditTeacher from "../pages/EditTeacher";
+import TeachersInfo from "../pages/Info/TeachersInfo";
+import ClientsInfo from "../pages/Info/ClientsInfo";
 
 const Router = () => {
   const { pathname } = useLocation();
@@ -27,8 +29,10 @@ const Router = () => {
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/equipments" element={<Equipments />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/clients/info" element={<ClientsInfo />} />
           <Route path="/teachers/add" element={<AddTeacher />} />
           <Route path="teachers/edit" element={<EditTeacher />} />
+          <Route path="teachers/info" element={<TeachersInfo />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<Auth />} />
