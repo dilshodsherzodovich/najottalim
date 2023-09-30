@@ -125,9 +125,15 @@ const Orders = () => {
               <td className="text-[16px] text-[#232D42] font-[700]">
                 {row.product}
               </td>
-              <td>{row.price}</td>
-              <td>{format(new Date(row.date), "yyyy.MM.dd")}</td>
-              <td>{row.quantity}</td>
+              <td className="text-[16px] text-[#232D42] font-[700]">
+                {row.price}
+              </td>
+              <td className="text-[16px] text-[#232D42] font-[700]">
+                {format(new Date(row.date), "yyyy.MM.dd")}
+              </td>
+              <td className="text-[16px] text-[#232D42] font-[700]">
+                {row.quantity}
+              </td>
               <td>
                 <DeleteIcon />
               </td>
