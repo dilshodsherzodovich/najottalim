@@ -9,6 +9,7 @@ const initialState = {
 export const getProductCategories = createAsyncThunk(
   "productCategories/getAll",
   async ({ token }) => {
+    console.log(token);
     const { request } = useHttp();
     return await request({
       url: "/products/category",

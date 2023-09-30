@@ -22,6 +22,8 @@ const Products = () => {
       <div className="bg-white p-[25px] rounded-[20px] mt-[30px]">
         {loading ? (
           "Loading..."
+        ) : products.length <= 0 ? (
+          <h1>Hech narsa topilmadi</h1>
         ) : (
           <PaginatedItemsProducts data={products} itemsPerPage={12} />
         )}

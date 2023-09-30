@@ -20,14 +20,16 @@ const Product = ({ ProductInfo }) => {
           className="bg-lightColor px-3 pt-[13px] pb-8 inline-block rounded-[20px] col-span-1 relative"
         >
           <div className="w-[100%] mb-2">
-            <img
-              src={ProductImg}
-              className="object-cover"
-              alt="equipment img"
-            />
+            <div className="w-full h-[255px]">
+              <img
+                src={`http://localhost:3001/products/images/${item.avatar}`}
+                className="w-full h-full object-cover"
+                alt="equipment img"
+              />
+            </div>
             <div className="flex gap-4 absolute bottom-2 right-7">
               <Link
-                to={`/products/edit?productId=${index + 1}`}
+                to={`/products/edit?productId=${item._id}`}
                 className="cursor-pointer"
               >
                 <EditIcon />
@@ -39,11 +41,13 @@ const Product = ({ ProductInfo }) => {
           </div>
           <div className="flex justify-between">
             <FontBold1 className="text-textColor">{item.name}</FontBold1>
-            <FontBold1 className="text-textRed">{item.firm}</FontBold1>
+            <FontBold1 className="text-textRed">{item.brand}</FontBold1>
           </div>
           <div className="flex justify-between">
             <FontBold1 className="text-textLightBlue">{item.usedFor}</FontBold1>
-            <FontBold1 className="text-priceSecondary">{item.price}</FontBold1>
+            <FontBold1 className="text-priceSecondary">
+              {item.price} $
+            </FontBold1>
           </div>
         </div>
       ))}
