@@ -182,8 +182,6 @@ function index() {
         ))}
       </div>
 
-      <DateSelector />
-
       <div className="bg-white p-8 rounded-[20px]">
         <Heading4 className="mb-[50px]">Ustozlar</Heading4>
         <div>
