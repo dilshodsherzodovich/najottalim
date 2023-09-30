@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // Images & Icons
 import Logo from "../../assets/images/logo.png";
 import Hand from "../../assets/icons/hand.svg";
@@ -12,18 +12,43 @@ import {
 import Heading4 from "../../components/Headings/Heading4";
 import FontNormal2 from "../../components/Fonts/FontNormal2";
 import FontBold1 from "../../components/Fonts/FontBold1";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearLoginRes,
+  login,
+  setEmail,
+  setPassword,
+} from "../../redux/slices/auth.slice";
 
 function Auth() {
-  const [password, setPassword] = useState("");
+  const { password, email, loginLoading, loginRes } = useSelector(
+    (state) => state.auth
+  );
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loginRes?.message) return;
+    navigate("/auth/verify");
+    dispatch(clearLoginRes());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginRes]);
 
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+    dispatch(setPassword(e.target.value));
   };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({ email, password }));
+  };
+
   return (
     <div className="h-screen w-full fixed">
       <div className="grid grid-cols-12 h-full">
@@ -35,9 +60,7 @@ function Auth() {
           </FontNormal2>
           <div className="flex gap-[6px] justify-center pt-10">
             <div className="w-[12px] h-[12px] bg-accentBlue rounded-full"></div>
-            <Link to="/auth/verify">
-              <div className="w-[12px] h-[12px] bg-accentBlue rounded-full opacity-30"></div>
-            </Link>
+            <div className="w-[12px] h-[12px] bg-accentBlue rounded-full opacity-30"></div>
             <div className="w-[12px] h-[12px] bg-accentBlue rounded-full opacity-30"></div>
           </div>
         </div>
@@ -50,8 +73,7 @@ function Auth() {
             <FontNormal2 className="text-textBlack text-[16px]">
               Please login to access your account.
             </FontNormal2>
-
-            <form action="#" className="mt-14">
+            <form onSubmit={handleSubmit} className="mt-14">
               <div className="flex justify-between mb-[10px]">
                 <label
                   htmlFor="email"
@@ -64,6 +86,10 @@ function Auth() {
               <input
                 type="email"
                 name="email"
+                value={email}
+                onChange={(e) => {
+                  dispatch(setEmail(e.target.value));
+                }}
                 id="email"
                 className="w-full bg-bgGrey indent-[22px] pt-[12px] pb-[9px] rounded-[4px]"
                 placeholder="Type your g-mail"
@@ -104,14 +130,15 @@ function Auth() {
 
               <button
                 type="submit"
-                className="w-full bg-accentBlue text-[20px] py-3 text-white rounded-lg mt-[47px]"
+                disabled={loginLoading}
+                className={`w-full ${
+                  loginLoading
+                    ? "bg-bgGrey text-lightGrey"
+                    : "bg-accentBlue text-white"
+                } text-[20px] py-3  rounded-lg mt-[47px]`}
               >
-                Log in
+                {loginLoading ? "Loading..." : "Log in"}
               </button>
-              <p className="text-[16px] font-[500] text-center mt-[20px]">
-                Don't have an account?{" "}
-                <span className="text-babyBlue">Sign Up</span>
-              </p>
             </form>
           </div>
         </div>

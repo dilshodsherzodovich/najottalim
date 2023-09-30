@@ -10,6 +10,7 @@ import SelectInput from "../../../components/FormElements/SelectInput";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addNewProduct } from "../../../redux/slices/products.slice";
+import axios from "axios";
 
 function ProductForm({ edit }) {
   const { product } = useSelector((state) => state.singleProduct);
@@ -22,16 +23,14 @@ function ProductForm({ edit }) {
       console.log(value, key);
     });
     dispatch(addNewProduct({ data: formData }));
-    // fetch({
-    //   method: "POST",
-    //   url: "http://localhost:3001/products/",
-    //   body: formData,
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
+    // axios
+    //   .post("http://localhost:3001/products/", formData, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //     },
+    //   })
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log(err));
   };
 
   return (

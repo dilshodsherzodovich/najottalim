@@ -9,8 +9,8 @@ export const handleHttpError = (error) => {
     const { status } = error.response;
     if (status >= 500) {
       errMeg = "Server error";
-    } else if (error.response.data.detail) {
-      errMeg = error.response.data.detail;
+    } else if (error.response.data.message) {
+      errMeg = error.response.data.message;
     } else if (status === 403) {
       errMeg = "Taqiqlangan";
     } else {

@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 //slices
+import auth from "./slices/auth.slice";
+import verify from "./slices/verify.slice";
 import sidebar from "./slices/sidebar.slice";
 import modals from "./slices/modals.slice";
 import teachers from "./slices/teachers.slice";
@@ -12,6 +14,8 @@ import singleProduct from "./slices/singleProduct.slice";
 
 export const store = configureStore({
   reducer: {
+    auth,
+    verify,
     sidebar,
     teachers,
     modals,

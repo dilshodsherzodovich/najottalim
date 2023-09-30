@@ -10,7 +10,7 @@ const initialState = {
 
 export const addNewProduct = createAsyncThunk(
   "products/addProduct",
-  async ({ data }) => {
+  async (data) => {
     const { request } = useHttp();
     return await request({
       method: "POST",
@@ -18,7 +18,7 @@ export const addNewProduct = createAsyncThunk(
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      data: data,
+      data,
     });
   }
 );
