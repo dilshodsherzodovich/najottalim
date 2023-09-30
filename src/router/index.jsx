@@ -23,6 +23,7 @@ import EditEquipment from "../pages/EditEquipment";
 import Products from "../pages/Products";
 import AddProduct from "../pages/AddProducts";
 import EditProduct from "../pages/EditProduct";
+import Chat from "../pages/Chat/Chat";
 
 const Router = () => {
   const { pathname } = useLocation();
@@ -57,6 +58,7 @@ const Router = () => {
           <Route path="/products/info" element={<ProductInfo />} />
           <Route path="/products/add" element={<AddProduct />} />
           <Route path="/products/edit" element={<EditProduct />} />
+          <Route path="/chat" element={<Chat />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<Auth />} />
