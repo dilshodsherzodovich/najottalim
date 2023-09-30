@@ -43,8 +43,10 @@ function SelectInput({
   options,
   isSearchable = false,
   name,
+  defaultValue,
 }) {
   const [showMenu, setShowMenu] = useState(false);
+  console.log(defaultValue);
 
   const customStyles = {
     control: (provided, state) => ({
@@ -79,7 +81,7 @@ function SelectInput({
         className="custom-select"
         options={options}
         isClearable
-        isSearchable={isSearchable}
+        defaultValue={defaultValue}
         placeholder="Tanlang..."
         styles={customStyles}
         onMenuClose={() => {
@@ -100,6 +102,7 @@ function SelectInput({
       options={options}
       isSearchable={isSearchable}
       placeholder="Tanlang..."
+      defaultValue={defaultValue}
       styles={customStyles}
       onMenuClose={() => {
         setShowMenu(false);

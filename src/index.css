@@ -68,3 +68,6 @@ input[type="checkbox"] {
   border: 2px solid blue; /* Change this color as needed */
   background-color: white; /* Default background color */
 }
+.file-delete-icon path {
+  stroke: white;
+}

@@ -1,14 +1,19 @@
 import React from "react";
 import CustomAddForm from "../../../components/FormElements/CustomAddForm";
 import PrimaryInput from "../../../components/FormElements/PrimaryInput";
+import PrimaryBtn from "../../../components/FormElements/PrimaryBtn";
+
 import Label from "../../../components/FormElements/Label";
 import TextArea from "../../../components/FormElements/TextArea";
 import FileUpload from "../../../components/FormElements/FileUpload";
 import SelectInput from "../../../components/FormElements/SelectInput";
 import { useSelector } from "react-redux";
+import { formatDate } from "../.././../utils/formDate";
+import { useNavigate } from "react-router-dom";
 
 function TeachersAddForm({ edit }) {
   const { teacher } = useSelector((state) => state.singleTeacher);
+  const navigate = useNavigate();
 
   return (
     <CustomAddForm className="pt-12 pb-24">
@@ -19,7 +24,7 @@ function TeachersAddForm({ edit }) {
         <PrimaryInput
           name="first_name"
           type="text"
-          value={edit ? teacher.first_name : null}
+          defaultValue={edit ? teacher.first_name : null}
           id="teacher_name"
           required={true}
           placeholder="Ismingizni kiriting"
@@ -33,6 +38,7 @@ function TeachersAddForm({ edit }) {
           name="last_name"
           type="text"
           id="teacher_surname"
+          defaultValue={edit ? teacher.last_name : null}
           required={true}
           placeholder="Familiyangizni kiriting"
         />
@@ -45,6 +51,7 @@ function TeachersAddForm({ edit }) {
           name="phone_number"
           type="number"
           id="phone"
+          defaultValue={edit ? teacher.phone_number : null}
           required={true}
           placeholder="+998901234567"
         />
@@ -56,6 +63,7 @@ function TeachersAddForm({ edit }) {
         <SelectInput
           name="category"
           creatable={true}
+          defaultValue={edit ? { value: teacher.gender, label: "Erkak" } : null}
           options={[
             { value: "male", label: "Erkak" },
             { value: "female", label: "Ayol" },
@@ -67,6 +75,7 @@ function TeachersAddForm({ edit }) {
           Ma'lumot
         </Label>
         <TextArea
+          defaultValue={edit ? teacher.information : null}
           required={true}
           name={"information"}
           id="info"
@@ -74,19 +83,20 @@ function TeachersAddForm({ edit }) {
         />
       </div>
       <div className="flex flex-col col-span-1">
-        <Label id={"info"} required={true}>
+        <Label id={"avatar"} required={true}>
           Rasmi
         </Label>
-        <FileUpload name="avatar" />
+        <FileUpload name="avatar" id="avatar" />
       </div>
       <div className="flex flex-col col-span-1">
         <Label id={"email"} required={true}>
-          Rasmi
+          Email
         </Label>
         <PrimaryInput
           type="email"
           id="email"
           required={true}
+          defaultValue={edit ? teacher.email : null}
           name="email"
           placeholder="demo@gmail.com"
         />
@@ -101,6 +111,7 @@ function TeachersAddForm({ edit }) {
           type="text"
           id="birth_date"
           required={true}
+          defaultValue={edit ? formatDate(teacher.birth_date) : null}
           placeholder="Tug'ilgan kunni kiriting"
         />
       </div>
@@ -111,11 +122,25 @@ function TeachersAddForm({ edit }) {
         <SelectInput
           name="gender"
           creatable={false}
+          defaultValue={edit ? { value: teacher.gender, label: "Erkak" } : null}
           options={[
             { value: "male", label: "Erkak" },
             { value: "female", label: "Ayol" },
           ]}
         />
+      </div>
+      <div className="buttons flex items-center justify-end gap-8  col-span-2">
+        <PrimaryBtn
+          className="border-2 border-primary text-primary"
+          handleClick={() => {
+            navigate("/teachers");
+          }}
+        >
+          Bekor qilish
+        </PrimaryBtn>
+        <PrimaryBtn className="border-2 border-primary text-white bg-primary">
+          {edit ? "Saqlash" : "Qo'shish"}
+        </PrimaryBtn>
       </div>
     </CustomAddForm>
   );

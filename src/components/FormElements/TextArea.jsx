@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
 
 function TextArea({
   name,
@@ -9,6 +8,7 @@ function TextArea({
   placeholder,
   required = false,
   className = "",
+  defaultValue,
 }) {
   const [charNum, setCharNum] = useState(0);
   const max = 2000;
@@ -20,6 +20,7 @@ function TextArea({
         id={id}
         value={value}
         placeholder={placeholder}
+        defaultValue={defaultValue}
         required={required}
         className={`p-[14px] text-lightGrey placeholder:text-lightGrey placeholder:text-[14px] text-[14px] font-[400] border border-lightColor rounded-[5px] outline-none h-44 overflow-auto resize-none ${className}`}
         onChange={(e) => {

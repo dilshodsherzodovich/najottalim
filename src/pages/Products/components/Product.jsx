@@ -5,6 +5,7 @@ import { ReactComponent as EditIcon } from "../../../assets/icons/edit.svg";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIsConfirmOpen } from "../../../redux/slices/modals.slice";
+import ProductImg from "../../../assets/images/product.png";
 
 const Product = ({ ProductInfo }) => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Product = ({ ProductInfo }) => {
         >
           <div className="w-[100%] mb-2">
             <img
-              src={item.image}
+              src={ProductImg}
               className="object-cover"
               alt="equipment img"
             />
