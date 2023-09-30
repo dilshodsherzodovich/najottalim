@@ -8,7 +8,7 @@ const MainLayout = () => {
   const [isAuth, setIsAuth] = useState(true);
   const [cookies] = useCookies("token");
 
-  return cookies.token ? (
+  return isAuth ? (
     <div className="flex">
       <Sidebar />
       <MainSection />
