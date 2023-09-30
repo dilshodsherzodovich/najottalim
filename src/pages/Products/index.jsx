@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PagesIntro from "../../components/PagesIntro";
 import PaginatedItemsProducts from "../../components/PaginatedItems/PaginatedItemsProducts";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useCookies } from "react-cookie";
+import { getAllProducts } from "../../redux/slices/products.slice";
 
 const Products = () => {
-  const { products } = useSelector((state) => state.products);
+  const { products, loading } = useSelector((state) => state.products);
+  const [cookies] = useCookies("token");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProducts({ token: cookies.token }));
+
+    //eslint-disable-next-line
+  }, []);
+
   return (
-    <>
+    <div className="pb-20">
       <PagesIntro />
-      <div className="bg-white p-[25px] rounded-[20px]  mt-[30px]">
-        <PaginatedItemsProducts data={products} itemsPerPage={12} />
+      <div className="bg-white p-[25px] rounded-[20px] mt-[30px]">
+        {loading ? (
+          "Loading..."
+        ) : (
+          <PaginatedItemsProducts data={products} itemsPerPage={12} />
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

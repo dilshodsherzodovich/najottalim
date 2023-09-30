@@ -44,9 +44,9 @@ function SelectInput({
   isSearchable = false,
   name,
   defaultValue,
+  handleCreate,
 }) {
   const [showMenu, setShowMenu] = useState(false);
-  console.log(defaultValue);
 
   const customStyles = {
     control: (provided, state) => ({
@@ -77,6 +77,9 @@ function SelectInput({
   if (creatable)
     return (
       <CreatableSelect
+        onCreateOption={(e) => {
+          handleCreate(e);
+        }}
         name={name}
         className="custom-select"
         options={options}

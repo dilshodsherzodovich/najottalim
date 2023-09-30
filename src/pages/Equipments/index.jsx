@@ -11,12 +11,12 @@ const Equipments = () => {
   const { equipments } = useSelector((state) => state.equipments);
 
   return (
-    <>
+    <div className="pb-20">
       <PagesIntro />
       <div className="bg-white p-[25px] rounded-[20px]  mt-[30px]">
         <PaginatedItemsEquipments data={equipments} itemsPerPage={12} />
       </div>
-    </>
+    </div>
   );
 };
 

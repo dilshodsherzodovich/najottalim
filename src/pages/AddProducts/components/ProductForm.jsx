@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CustomAddForm from "../../../components/FormElements/CustomAddForm";
 import PrimaryInput from "../../../components/FormElements/PrimaryInput";
 import PrimaryBtn from "../../../components/FormElements/PrimaryBtn";
@@ -10,27 +10,77 @@ import SelectInput from "../../../components/FormElements/SelectInput";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addNewProduct } from "../../../redux/slices/products.slice";
-import axios from "axios";
+import { useCookies } from "react-cookie";
+import {
+  createCategory,
+  getProductCategories,
+} from "../../../redux/slices/productCategories.slice";
 
 function ProductForm({ edit }) {
   const { product } = useSelector((state) => state.singleProduct);
+  const { categories, loading } = useSelector(
+    (state) => state.productCategories
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [cookies] = useCookies("token");
+
+  useEffect(() => {
+    dispatch(getProductCategories({ token: cookies.token }));
+
+    //eslint-disable-next-line
+  }, []);
 
   const handleSubmit = (e) => {
     const formData = new FormData(e.target);
+    formData.append("type", "product");
     formData.forEach((value, key) => {
-      console.log(value, key);
+      console.log(typeof value, key);
     });
-    dispatch(addNewProduct({ data: formData }));
-    // axios
-    //   .post("http://localhost:3001/products/", formData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //   })
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
+    dispatch(addNewProduct({ data: formData, token: cookies.token }));
+  };
+
+  const handleOptions = (arrayOptions) => {
+    let options = [];
+    if (loading) {
+      options = [
+        {
+          value: "Yuklnamoqda",
+          label: "Yuklanmoqda",
+          isDisabled: true,
+        },
+      ];
+      return options;
+    }
+
+    if (!arrayOptions || arrayOptions.error || arrayOptions.length <= 0) {
+      options = [
+        {
+          value: "Ma'lumotlar mavjud emas",
+          label: "Ma'lumotlar mavjud emas",
+          isDisabled: true,
+        },
+      ];
+      return options;
+    }
+
+    arrayOptions.forEach((item) => {
+      options.push({
+        value: item._id,
+        label: item.name,
+      });
+    });
+
+    return options;
+  };
+
+  const handleCreateProduct = (e) => {
+    dispatch(
+      createCategory({
+        data: { name: e, type: "product" },
+        token: cookies.token,
+      })
+    );
   };
 
   return (
@@ -84,15 +134,13 @@ function ProductForm({ edit }) {
           Turi
         </Label>
         <SelectInput
+          handleCreate={handleCreateProduct}
           name="category"
           creatable={true}
           defaultValue={
             edit ? { value: product.category, label: "Gainer" } : null
           }
-          options={[
-            { value: "65158bcdc20bab5797098dd0", label: "Gainer" },
-            { value: "65158bcdc20bab5797098dd1", label: "Steroid" },
-          ]}
+          options={handleOptions(categories)}
         />
       </div>
       <div className="flex flex-col col-span-1">

@@ -11,6 +11,7 @@ import equipments from "./slices/equipments.slice";
 import singleEquipment from "./slices/singleEquipment.slice";
 import products from "./slices/products.slice";
 import singleProduct from "./slices/singleProduct.slice";
+import productCategories from "./slices/productCategories.slice";
 
 export const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ export const store = configureStore({
     singleEquipment,
     products,
     singleProduct,
+    productCategories,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== "production",
