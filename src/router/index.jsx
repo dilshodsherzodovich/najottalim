@@ -13,6 +13,11 @@ import AddTeacher from "../pages/AddTeacher";
 import EditTeacher from "../pages/EditTeacher";
 import TeachersInfo from "../pages/Info/TeachersInfo";
 import ClientsInfo from "../pages/Info/ClientsInfo";
+import ProductInfo from "../pages/ProductInfo/ProductInfo";
+import EquipmentInfo from "../pages/ProductInfo/EquipmentInfo";
+import Orders from "../pages/Orders/Orders";
+import Cart from "../pages/Cart/Cart";
+import ClientOrders from "../pages/Orders/ClientOrders";
 
 const Router = () => {
   const { pathname } = useLocation();
@@ -28,11 +33,16 @@ const Router = () => {
           <Route index element={<Home />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/equipments" element={<Equipments />} />
+          <Route path="/equipments/info" element={<EquipmentInfo />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/info" element={<ProductInfo />} />
           <Route path="/clients/info" element={<ClientsInfo />} />
           <Route path="/teachers/add" element={<AddTeacher />} />
           <Route path="teachers/edit" element={<EditTeacher />} />
           <Route path="teachers/info" element={<TeachersInfo />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/client-orders" element={<ClientOrders />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<Auth />} />

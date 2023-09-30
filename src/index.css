@@ -63,3 +63,8 @@ input[type="number"] {
 .css-1hb7zxy-IndicatorsContainer {
   padding-right: 14px !important;
 }
+
+input[type="checkbox"] {
+  border: 2px solid blue; /* Change this color as needed */
+  background-color: white; /* Default background color */
+}

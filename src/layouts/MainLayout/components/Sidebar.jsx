@@ -61,6 +61,12 @@ function Sidebar() {
       value: "products",
     },
     {
+      name: "Buyurtmalar",
+      icon: <CalendarLogo className="sidebar-logo" />,
+      link: "/orders",
+      value: "orders",
+    },
+    {
       name: "Savol javob",
       icon: <ChatLogo className="sidebar-logo" />,
       link: "/chat",
